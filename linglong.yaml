@@ -1,0 +1,30 @@
+version: "1"
+
+package:
+  id: io.github.Addle
+  name: Addle
+  version: 0.0.0.1
+  kind: app
+  description: |
+    Pretty little drawing application and image utility
+
+command:
+  - /opt/apps/io.github.Addle/files/bin/addle
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/squeevee/Addle.git
+    version: master
+    commit: 20ec4335669fbd88d36742f586899d8416920959
+
+build: |
+  cd /project/linglong/sources/Addle.git
+  git apply ../../../0001-install.patch
+  mkdir -p build
+  cd build
+  cmake .. \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX}
+  cmake --build . --target install -j$(nproc --all)
