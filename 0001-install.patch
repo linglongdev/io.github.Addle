@@ -1,0 +1,50 @@
+From 4e7a5e14bd9089587e495a8c0826a51c362f7bb0 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Thu, 19 Sep 2024 14:09:57 +0800
+Subject: [PATCH] install
+
+---
+ CMakeLists.txt |  8 +++++++-
+ addle.desktop  | 11 +++++++++++
+ 2 files changed, 18 insertions(+), 1 deletion(-)
+ create mode 100644 addle.desktop
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3f4a9e0..f68f970 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,4 +38,10 @@ add_subdirectory( src )
+ include( CTest )
+ if(BUILD_TESTING)
+     add_subdirectory( tests )
+-endif()
+\ No newline at end of file
++endif()
++
++install(FILES resources/icons/+dark/brush-tool.png
++        DESTINATION share/icons)
++
++install(FILES addle.desktop
++            DESTINATION share/applications)
+\ No newline at end of file
+diff --git a/addle.desktop b/addle.desktop
+new file mode 100644
+index 0000000..cfe307e
+--- /dev/null
++++ b/addle.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=addle
++Name=addle
++Name[zh_CN]=addle
++Icon=brush-tool
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=addle
++Version=1.0
+\ No newline at end of file
+-- 
+2.43.4
+
